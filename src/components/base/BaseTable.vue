@@ -4,8 +4,8 @@
     <el-container>
       <el-header class="header">
         <el-button
-          v-for="(item, index) in tableButton"
-          :key="index"
+          v-for="item in tableButton"
+          :key="item.name"
           :size="item.size"
           :type="item.type"
           v-text="item.name"
@@ -23,8 +23,8 @@
         >
           <el-table-column type="selection" width="55"></el-table-column>
           <el-table-column
-            v-for="(item, index) in tableLabel"
-            :key="index"
+            v-for="item in tableLabel"
+            :key="item.label"
             :prop="item[param]"
             :label="item.label"
             :width="item.width"
@@ -72,7 +72,7 @@
             :width="tableOptions.width"
           >
             <template slot-scope="scope">
-              <div v-for="(item, index) in tableOptions.opts" :key="index">
+              <div v-for="item in tableOptions.opts" :key="item.name">
                 <div v-if="item.type === 'text'">
                   <p @click="handleSize(item.methods, scope.row)">
                     {{ item.name }}
