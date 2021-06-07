@@ -1,0 +1,171 @@
+@import "./normalize.css";
+@import "./plus.scss";
+/* 1.左浮动*/
+.p-fl {
+    float: left;
+}
+
+/* 2.右浮动*/
+.p-fr {
+    float: right;
+}
+
+/* 3.清除浮动*/
+.p-clearfix::after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    content: ".";
+}
+
+/* 4.超2行省略 */
+.p-2-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/* 5.手势 */
+.p-pointer {
+    cursor: pointer;
+}
+
+/* 6.flex */
+.p-flex {
+    display: flex;
+    align-items: center;
+}
+
+.p-flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 7.flex两端对齐 */
+.p-flex-space-between {
+    justify-content: space-between;
+}
+
+/* 8.flex平均分布 */
+.p-flex-space-around {
+    justify-content: space-around;
+}
+
+/* 9.圆角 */
+.p-border-radius-8 {
+    border-radius: 8px;
+}
+
+.p-border-radius-half {
+    border-radius: 50%;
+}
+
+/* 10.阴影 */
+.p-shadow {
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.16);
+}
+
+/* 11.必填 */
+.p-required {
+    display: block;
+    color: #f56c6c;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* 12.验证*号 */
+.p-required-symbol:before {
+    content: "*";
+    color: #f56c6c;
+    margin-right: 6px;
+}
+
+/* 13.常用字体大小 */
+.p-font-size-12 {
+    font-size: 12px;
+}
+
+.p-font-size-14 {
+    font-size: 14px;
+}
+
+.p-font-size-16 {
+    font-size: 16px;
+}
+
+/* 14.常用字体颜色 */
+
+/* 基本色 */
+.p-text-color-black {
+    color: #000000;
+}
+
+/* 灰色 */
+.p-text-color-grey {
+    color: #909399;
+}
+
+/* 蓝色 */
+.p-text-color-blue {
+    color: #409EFF;
+}
+
+/* 绿色 */
+.p-text-color-green {
+    color: #67C23A;
+}
+
+/* 橙色 */
+.p-text-color-orange {
+    color: #E6A23C;
+}
+
+/* 红色 */
+.p-text-color-red {
+    color: #F56C6C;
+}
+
+/* 15.常见按钮颜色 */
+.p-primary-btn-color {
+    background-color: #409EFF;
+    color: #FFFFFF;
+}
+
+.p-success-btn-color {
+    background-color: #67C23A;
+    color: #FFFFFF;
+}
+
+.p-warning-btn-color {
+    background-color: #E6A23C;
+    color: #FFFFFF;
+}
+
+.p-error-btn-color {
+    background-color: #F56C6C;
+    color: #FFFFFF;
+}
+
+/* 16.定位 */
+
+/* 相对定位 */
+.p-relative {
+    position: relative;
+}
+
+/* 绝对定位 */
+.p-absolute {
+    position: absolute;
+    z-index: 9999;
+}
+
+/* 固定定位 */
+.p-fixed {
+    position: fixed;
+    z-index: 9999;
+}
