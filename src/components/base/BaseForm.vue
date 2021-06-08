@@ -23,6 +23,8 @@
             item.placeholder ? item.placeholder : '请输入' + item.label
           "
           :clearable="item.clearable ? item.clearable : clearable"
+          :suffix-icon="item.frontIcon"
+          :prefix-icon="item.behindIcon"
         ></el-input>
         <el-select
           v-if="item.mold === 'select'"
@@ -32,6 +34,7 @@
             item.placeholder ? item.placeholder : '请输入' + item.label
           "
           :clearable="item.clearable ? item.clearable : clearable"
+          :filterable="item.filterable ? item.filterable : false"
         >
           <el-option
             v-for="term in item.options"
@@ -43,17 +46,66 @@
         <el-radio-group
           v-if="item.mold === 'radio'"
           v-model="formObject[item.prop]"
+          :text-color="item.textColor"
+          :size="item.size"
+          :disabled="item.disabled"
+          :fill="item.fillcolor"
         >
-          <el-radio
-            v-for="term in item.options"
-            :key="term.value"
-            :label="term.value"
-            v-text="term.label"
-            :disabled="term.disabled"
-            :border="term.border"
-            :size="term.size"
-          ></el-radio>
+          <el-col :span="24" v-if="item.type === 'radioButton'">
+            <el-radio-button
+              v-for="term in item.options"
+              :key="term.value"
+              :label="term.value"
+              :disabled="item.disabled"
+              v-text="term.label"
+            ></el-radio-button>
+          </el-col>
+          <el-col :span="24" v-if="item.type === 'radio'">
+            <el-radio
+              v-for="term in item.options"
+              :key="term.value"
+              :label="term.value"
+              v-text="term.label"
+              :disabled="term.disabled"
+              :border="term.border"
+              :size="term.size"
+            ></el-radio>
+          </el-col>
         </el-radio-group>
+        <el-checkbox-group
+          v-if="item.mold === 'checkbox'"
+          v-model="formObject[item.prop]"
+          :size="item.size"
+          :disabled="item.disabled"
+          :min="item.min"
+          :max="item.max"
+          :text-color="item.textColor"
+          :fill="item.fillcolor"
+          :true-label="trueValue"
+          :false-label="falseValue"
+        >
+          <el-col :span="24" v-if="item.type === 'checkboxButton'">
+            <el-checkbox-button
+              v-for="term in item.options"
+              :key="term.value"
+              :label="term.value"
+              v-text="term.label"
+              :disabled="term.disabled"
+              :checked="term.checked"
+              :true-label="trueValue"
+              :false-label="falseValue"
+            ></el-checkbox-button>
+          </el-col>
+          <el-col :span="24" v-if="item.type === 'checkbox'">
+            <el-checkbox
+              v-for="term in item.options"
+              :key="term.value"
+              :label="term.value"
+              v-text="term.label"
+              :disabled="term.disabled"
+            ></el-checkbox>
+          </el-col>
+        </el-checkbox-group>
       </el-form-item>
     </el-form>
   </div>
