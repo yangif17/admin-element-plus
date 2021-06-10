@@ -20,19 +20,20 @@
           :row-class-name="tableRowClassName"
           :border="border"
           :stripe="stripe"
+          @selection-change="handleSelectionChange"
         >
-          <el-table-column type="selection" width="55"></el-table-column>
+          <slot name="selection"></slot>
+          <slot name="index"></slot>
           <el-table-column
             v-for="item in tableLabel"
             :key="item.label"
-            :prop="item[param]"
+            :prop="item.param"
             :label="item.label"
             :width="item.width"
+            v-show="item.show"
+            :align="item.align"
           >
             <template slot-scope="scope">
-              <div v-if="item.type === 'index'">
-                <p>{{ index }}</p>
-              </div>
               <div v-if="item.type === 'input'">
                 <el-input
                   v-model="scope.row[item.param]"
@@ -44,13 +45,13 @@
                   @clear="handleInputClear(scope.row)"
                 ></el-input>
               </div>
-              <div v-if="item.type === 'html'">
+              <div v-else-if="item.type === 'html'">
                 <p
                   v-html="item.html(scope.row)"
                   @click="handleHtml(scope.row)"
                 ></p>
               </div>
-              <div v-if="item.type === 'switch'">
+              <div v-else-if="item.type === 'switch'">
                 <el-switch
                   v-model="scope.row[item.param]"
                   active-color="#13ce66"
@@ -61,7 +62,7 @@
                 >
                 </el-switch>
               </div>
-              <div v-else>
+              <div v-else :class="item.class">
                 <span>{{ scope.row[item.param] }}</span>
               </div>
             </template>
@@ -116,7 +117,7 @@
  * @param   {Boolean}   border        列表边框
  * @param   {Boolean}   stripe        列表斑马纹
  * @param   {Object}    subjoin       列表额外参数
- * @param   {Object}    subjoin       列表额外参数
+ * @param   {Object}    tableOptions  列表操作栏
  * @return  {*}
  */
 export default {
@@ -144,11 +145,19 @@ export default {
     },
     subjoin: {
       type: Object,
-      default: {
-        // switch打开默认值
-        active_value: 1,
-        // switch关闭默认值
-        inactive_value: 2,
+      default: () => {
+        return {
+          // switch打开默认值
+          active_value: 1,
+          // switch关闭默认值
+          inactive_value: 2,
+        };
+      },
+    },
+    tableOptions: {
+      type: Object,
+      default: () => {
+        return {};
       },
     },
   },
@@ -221,6 +230,10 @@ export default {
       this.current_page =
         this.current_page > totalPage ? totalPage : this.current_page;
       this.current_page = this.current_page < 1 ? 1 : this.current_page;
+    },
+    // 列表选中按钮
+    handleSelectionChange(value) {
+      this.$emit("handleSelectionChange", value);
     },
   },
 };

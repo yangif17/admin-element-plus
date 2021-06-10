@@ -112,43 +112,43 @@
 
 /* 蓝色 */
 .p-text-color-blue {
-    color: #409EFF;
+    color: #409eff;
 }
 
 /* 绿色 */
 .p-text-color-green {
-    color: #67C23A;
+    color: #67c23a;
 }
 
 /* 橙色 */
 .p-text-color-orange {
-    color: #E6A23C;
+    color: #e6a23c;
 }
 
 /* 红色 */
 .p-text-color-red {
-    color: #F56C6C;
+    color: #f56c6c;
 }
 
 /* 15.常见按钮颜色 */
 .p-primary-btn-color {
-    background-color: #409EFF;
-    color: #FFFFFF;
+    background-color: #409eff;
+    color: #ffffff;
 }
 
 .p-success-btn-color {
-    background-color: #67C23A;
-    color: #FFFFFF;
+    background-color: #67c23a;
+    color: #ffffff;
 }
 
 .p-warning-btn-color {
-    background-color: #E6A23C;
-    color: #FFFFFF;
+    background-color: #e6a23c;
+    color: #ffffff;
 }
 
 .p-error-btn-color {
-    background-color: #F56C6C;
-    color: #FFFFFF;
+    background-color: #f56c6c;
+    color: #ffffff;
 }
 
 /* 16.定位 */
@@ -168,4 +168,9 @@
 .p-fixed {
     position: fixed;
     z-index: 9999;
+}
+
+/* 文本居中 */
+.p-center {
+    text-align: center;
 }

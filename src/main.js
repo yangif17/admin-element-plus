@@ -9,7 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 // 2.public.css
 import "./style/public.css"
-// 3.
+// 3.全局组件
+import "./components/index"
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 

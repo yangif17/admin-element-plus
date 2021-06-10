@@ -35,6 +35,7 @@
  * @param   {String}     popupTitle      弹窗标题
  */
 export default {
+  name: "BaseDialog",
   props: {
     dialogVisible: {
       type: Boolean,
