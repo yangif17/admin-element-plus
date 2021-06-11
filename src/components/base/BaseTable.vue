@@ -22,8 +22,9 @@
           :stripe="stripe"
           @selection-change="handleSelectionChange"
         >
-          <slot name="selection"></slot>
-          <slot name="index"></slot>
+          <!-- <slot name="selection"></slot>
+          <slot name="index"></slot> -->
+          <slot></slot>
           <el-table-column
             v-for="item in tableLabel"
             :key="item.label"

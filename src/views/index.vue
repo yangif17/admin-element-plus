@@ -9,14 +9,12 @@
         border
         @handleSelectionChange="handleSelectionChange"
       >
-        <template #selection>
+        <template>
           <el-table-column
             type="selection"
             width="55"
             align="center"
           ></el-table-column>
-        </template>
-        <template #index>
           <el-table-column
             type="index"
             width="55"
