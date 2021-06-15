@@ -31,7 +31,7 @@
           v-model="formObject[item.prop]"
           :disabled="item.disabled"
           :placeholder="
-            item.placeholder ? item.placeholder : '请输入' + item.label
+            item.placeholder ? item.placeholder : '请选择' + item.label
           "
           :clearable="item.clearable ? item.clearable : clearable"
           :filterable="item.filterable ? item.filterable : false"
@@ -106,6 +106,24 @@
             ></el-checkbox>
           </el-col>
         </el-checkbox-group>
+        <el-date-picker
+          v-if="item.mold === 'datePicker'"
+          v-model="formObject[item.prop]"
+          :type="item.type"
+          :range-separator="item.separator"
+          :start-placeholder="item.startText"
+          :end-placeholder="item.endText"
+          :disabled="item.disabled"
+          :editable="item.editable"
+          :clearable="item.clearable ? item.clearable : clearable"
+          :size="item.size"
+          :placeholder="
+            item.placeholder ? item.placeholder : '请选择' + item.label
+          "
+          :format="item.format"
+          :align="item.align"
+        >
+        </el-date-picker>
       </el-form-item>
     </el-form>
   </div>
