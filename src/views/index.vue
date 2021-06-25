@@ -23,6 +23,7 @@
           ></el-table-column>
         </template>
       </base-table>
+      <base-form :form-label="formLabel" :form-object="formObject"></base-form>
     </el-main>
   </el-container>
 </template>
@@ -34,12 +35,12 @@ export default {
       tableButton: [
         {
           name: "查询",
-          size: "samll",
+          size: "small",
           type: "primary",
         },
         {
           name: "重置",
-          size: "samll",
+          size: "small",
           type: "success",
         },
       ],
@@ -103,6 +104,157 @@ export default {
           align: "center",
         },
       ],
+      formLabel: [
+        {
+          label: "姓名",
+          mold: "input",
+          prop: "name",
+        },
+        {
+          label: "备注",
+          mold: "input",
+          prop: "note",
+          type: "textarea",
+          rows: "3",
+          disabled: true,
+        },
+        {
+          label: "年龄",
+          mold: "select",
+          prop: "age",
+          filterable: true,
+          options: [
+            {
+              value: 1,
+              label: "18",
+            },
+            {
+              value: 2,
+              label: "19",
+            },
+            {
+              value: 3,
+              label: "20",
+            },
+          ],
+        },
+        {
+          label: "性别",
+          mold: "radio",
+          type: "radio",
+          prop: "sex",
+          size: "small",
+          options: [
+            {
+              value: 1,
+              label: "男",
+              border: true,
+              size: "small",
+            },
+            {
+              value: 2,
+              label: "女",
+              border: true,
+              size: "small",
+            },
+          ],
+        },
+        {
+          label: "班级",
+          mold: "radio",
+          type: "radioButton",
+          prop: "class",
+          size: "small",
+          options: [
+            {
+              value: 1,
+              label: "1班",
+              border: true,
+              size: "small",
+            },
+            {
+              value: 2,
+              label: "2班",
+              border: true,
+              size: "small",
+            },
+            {
+              value: 3,
+              label: "3班",
+              border: true,
+              size: "small",
+            },
+          ],
+        },
+        {
+          label: "爱好",
+          mold: "checkbox",
+          type: "checkbox",
+          prop: "hobby",
+          size: "small",
+          options: [
+            {
+              value: 1,
+              label: "篮球",
+            },
+            {
+              value: 2,
+              label: "足球",
+            },
+            {
+              value: 3,
+              label: "排球",
+            },
+          ],
+        },
+        {
+          label: "兴趣",
+          mold: "checkbox",
+          type: "checkboxButton",
+          prop: "interest",
+          size: "small",
+          options: [
+            {
+              value: 1,
+              label: "篮球",
+            },
+            {
+              value: 2,
+              label: "足球",
+            },
+            {
+              value: 3,
+              label: "排球",
+            },
+          ],
+        },
+        {
+          label: "时间段",
+          mold: "datePicker",
+          type: "datetimerange",
+          prop: "time",
+          separator: "-",
+          startText: "开始时间",
+          endText: "结束时间",
+        },
+        {
+          label: "创建时间",
+          mold: "datePicker",
+          type: "datetime",
+          prop: "time2",
+        },
+      ],
+      formObject: {
+        name: "",
+        note: "",
+        age: 1,
+        sex: 1,
+        class: 3,
+        hobby: [1],
+        interest: [1, 2],
+        time: [],
+        time2:""
+      },
     };
   },
   methods: {

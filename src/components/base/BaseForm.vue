@@ -11,7 +11,7 @@
         v-for="item in formLabel"
         :key="item.label"
         :label="item.label"
-        :prop="formObject[item.prop]"
+        :prop="item.prop"
       >
         <el-input
           v-if="item.mold === 'input'"
@@ -49,7 +49,7 @@
           :text-color="item.textColor"
           :size="item.size"
           :disabled="item.disabled"
-          :fill="item.fillcolor"
+          :fill="item.fillcolor ? item.fillcolor : '#409EFF'"
         >
           <el-col :span="24" v-if="item.type === 'radioButton'">
             <el-radio-button
@@ -57,19 +57,19 @@
               :key="term.value"
               :label="term.value"
               :disabled="item.disabled"
-              v-text="term.label"
-            ></el-radio-button>
+              >{{ term.label }}</el-radio-button
+            >
           </el-col>
-          <el-col :span="24" v-if="item.type === 'radio'">
+          <el-col :span="24" v-else-if="item.type === 'radio'">
             <el-radio
               v-for="term in item.options"
               :key="term.value"
               :label="term.value"
-              v-text="term.label"
               :disabled="term.disabled"
               :border="term.border"
               :size="term.size"
-            ></el-radio>
+              >{{ term.label }}</el-radio
+            >
           </el-col>
         </el-radio-group>
         <el-checkbox-group
@@ -81,29 +81,24 @@
           :max="item.max"
           :text-color="item.textColor"
           :fill="item.fillcolor"
-          :true-label="trueValue"
-          :false-label="falseValue"
         >
           <el-col :span="24" v-if="item.type === 'checkboxButton'">
             <el-checkbox-button
               v-for="term in item.options"
               :key="term.value"
               :label="term.value"
-              v-text="term.label"
               :disabled="term.disabled"
-              :checked="term.checked"
-              :true-label="trueValue"
-              :false-label="falseValue"
-            ></el-checkbox-button>
+              >{{ term.label }}</el-checkbox-button
+            >
           </el-col>
-          <el-col :span="24" v-if="item.type === 'checkbox'">
+          <el-col :span="24" v-else-if="item.type === 'checkbox'">
             <el-checkbox
               v-for="term in item.options"
               :key="term.value"
               :label="term.value"
-              v-text="term.label"
               :disabled="term.disabled"
-            ></el-checkbox>
+              >{{ term.label }}</el-checkbox
+            >
           </el-col>
         </el-checkbox-group>
         <el-date-picker
@@ -125,6 +120,7 @@
         >
         </el-date-picker>
       </el-form-item>
+      <slot></slot>
     </el-form>
   </div>
 </template>
